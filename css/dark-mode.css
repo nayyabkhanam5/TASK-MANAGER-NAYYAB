@@ -1,0 +1,41 @@
+body.dark-mode{
+    background:#1e1e1e;
+    color:white;
+}
+
+body.dark-mode header h1{
+    color:white;
+}
+
+body.dark-mode .column{
+    background:#2b2b2b;
+}
+
+body.dark-mode .task-card{
+    background:#3a3a3a;
+    border-color:#555;
+}
+
+body.dark-mode .stats div{
+    background:#2b2b2b;
+}
+
+body.dark-mode .task-form{
+    background:#2b2b2b;
+    color:white;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select{
+    background:#444;
+    color:white;
+    border:1px solid #666;
+}
+html.dark-mode,
+html.dark-mode body{
+
+    background:#121212;
+    color:white;
+
+}
