@@ -13,14 +13,15 @@ A fully featured Kanban-style task management board built using pure HTML, CSS, 
 ## Screenshots
 
 ### Desktop Board
-
-![Desktop](screenshots/desktop.png)
+![desktop](screenshots/desktop.png)
 
 ### Mobile Tab View
-![Mobile View](screenshots/mobile.png)
+![mobile](screenshots/mobile1.png)
+![mobile](screenshots/mobile2.png)
+![mobile](screenshots/mobile3.png)
 
 ### Task Modal Open
-![Modal](screenshots/modal.png)
+![modal](screenshots/modal.png)
 
 ---
 
@@ -80,14 +81,14 @@ A fully featured Kanban-style task management board built using pure HTML, CSS, 
 
 ## Folder Structure
 
-TASK-MANAGER-NAYYAB
-
+```
+task-manager-nayyab/
 ├── index.html
-├── css
+├── css/
 │   ├── style.css
 │   ├── dark-mode.css
 │   └── animations.css
-├── js
+├── js/
 │   ├── app.js
 │   ├── theme-init.js
 │   ├── storage.js
@@ -97,8 +98,54 @@ TASK-MANAGER-NAYYAB
 │   ├── stats.js
 │   ├── ui.js
 │   └── tab.js
-├── screenshots
+├── screenshots/
 │   ├── desktop.png
-│   ├── mobile.png
+│   ├── mobile1.png
+│   ├── mobile2.png
+│   ├── mobile3.png
 │   └── modal.png
 └── README.md
+```
+
+---
+
+## How to Run Locally
+
+1. Click the green **Code** button on this GitHub repository
+2. Click **Download ZIP** and extract the folder
+3. Open the extracted folder
+4. Double click **index.html** to open it in your browser
+5. Everything works locally — no server or installation needed
+
+---
+
+## Data Structure
+
+Each task is stored as a JavaScript object inside an array in localStorage:
+
+```javascript
+const tasks = [
+  {
+    id: 1703001234567,        // Date.now() at creation time
+    title: "Build login page", // Task title (min 3 chars)
+    description: "Create a responsive login form with validation",
+    priority: "High",          // "High" | "Medium" | "Low"
+    status: "todo",            // "todo" | "progress" | "done"
+    date: "2025-12-25",        // ISO date string YYYY-MM-DD
+    tags: ["HTML", "CSS", "JS"], // Array of tag strings
+    createdAt: 1703001234567   // Date.now() at creation time
+  }
+];
+
+// Saving to localStorage:
+localStorage.setItem("tasks", JSON.stringify(tasks));
+
+// Reading from localStorage:
+const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+```
+
+---
+
+## What I Learned
+
+Building this project was a great learning experience. The biggest challenge I faced was managing the tasks array as the single source of truth — every render, filter, sort, and stat had to come from the same array instead of reading from the DOM. I also learned how localStorage works with JSON.stringify and JSON.parse to save and restore complex data. Dark mode without a page flash was tricky — I solved it by running a tiny script in the head before the body renders. The filter, search, and sort system taught me how to chain .filter() and .sort() together cleanly. Overall this project made me much more confident with DOM manipulation, event handling, and organising JavaScript into separate files with clear responsibilities.

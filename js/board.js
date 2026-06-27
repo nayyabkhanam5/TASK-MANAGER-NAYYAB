@@ -107,6 +107,67 @@ function renderTasks() {
             ? "<p class='overdue'>⚠ Overdue</p>"
             : "";
 
+        // BONUS: Due date countdown label
+        // "Due in 3 days" — sirf tab show hoga jab task done na ho
+        // aur overdue bhi na ho
+        function getDueDateCountdown(dateStr, status) {
+
+            // Done tasks ya no date wale ko skip karo
+            if (!dateStr || status === "done") {
+                return "";
+            }
+
+            const todayDate = new Date();
+            todayDate.setHours(0, 0, 0, 0);
+
+            const dueDate =
+            new Date(dateStr + "T00:00:00");
+            dueDate.setHours(0, 0, 0, 0);
+
+            // Difference in days
+            const diffTime =
+            dueDate.getTime() - todayDate.getTime();
+
+            const diffDays =
+            Math.round(diffTime / (1000 * 60 * 60 * 24));
+
+            // Overdue wale cards pe mat dikhao
+            if (diffDays < 0) {
+                return "";
+            }
+
+            // Aaj due hai
+            if (diffDays === 0) {
+                return "<p class='countdown today'>" +
+                       "📅 Due Today!" +
+                       "</p>";
+            }
+
+            // Kal due hai
+            if (diffDays === 1) {
+                return "<p class='countdown soon'>" +
+                       "⏰ Due Tomorrow" +
+                       "</p>";
+            }
+
+            // 7 din ya kam mein due hai
+            if (diffDays <= 7) {
+                return "<p class='countdown soon'>" +
+                       "⏳ Due in " + diffDays + " days" +
+                       "</p>";
+            }
+
+            // 7 din se zyada baad due hai
+            return "<p class='countdown upcoming'>" +
+                   "📆 Due in " + diffDays + " days" +
+                   "</p>";
+
+        }
+
+        // Countdown label generate karo
+        const countdownLabel =
+        getDueDateCountdown(task.date, task.status);
+
         // Tags as pills
         const tagsArray = Array.isArray(task.tags)
             ? task.tags
@@ -147,11 +208,13 @@ function renderTasks() {
         ? "<span class='done-check'>✓ Done</span>"
         : "";
 
-        // Description preview
+        // FIX: null guard on description
+        // Agar description undefined ya empty ho to crash na ho
+        const desc = task.description || "";
         const descPreview =
-        task.description.length > 60
-        ? task.description.substring(0, 60) + "..."
-        : task.description;
+        desc.length > 60
+        ? desc.substring(0, 60) + "..."
+        : desc;
 
         // Build card element
         const card =
@@ -185,6 +248,7 @@ function renderTasks() {
                 ${task.title}
             </h3>
             ${overdueBadge}
+            ${countdownLabel}
             <p class="desc-preview">${descPreview}</p>
             <p>
                 Priority:

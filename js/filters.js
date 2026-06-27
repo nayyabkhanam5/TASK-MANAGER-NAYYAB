@@ -1,53 +1,60 @@
-const priorityFilter =
-document.getElementById("priorityFilter");
+// FIX: Sab code ek named function ke andar wrap kiya
+// Pehle yeh code global scope mein tha — ab initFilters() ke andar hai
+function initFilters() {
 
-const sortTasks =
-document.getElementById("sortTasks");
+    const priorityFilter =
+    document.getElementById("priorityFilter");
 
-const clearFilters =
-document.getElementById("clearFilters");
+    const sortTasks =
+    document.getElementById("sortTasks");
 
-
-if(priorityFilter){
-
-    priorityFilter.addEventListener(
-        "change",
-        renderTasks
-    );
-
-}
+    const clearFilters =
+    document.getElementById("clearFilters");
 
 
-if(sortTasks){
+    if (priorityFilter) {
 
-    sortTasks.addEventListener(
-        "change",
-        renderTasks
-    );
+        priorityFilter.addEventListener(
+            "change",
+            renderTasks
+        );
 
-}
+    }
 
 
-if(clearFilters){
+    if (sortTasks) {
 
-    clearFilters.addEventListener(
-        "click",
-        function(){
+        sortTasks.addEventListener(
+            "change",
+            renderTasks
+        );
 
-            document.getElementById(
-                "searchInput"
-            ).value = "";
+    }
 
-            document.getElementById(
-                "priorityFilter"
-            ).value = "all";
 
-            document.getElementById(
-                "sortTasks"
-            ).value = "created";
+    if (clearFilters) {
 
-            renderTasks();
-        }
-    );
+        clearFilters.addEventListener(
+            "click",
+            function() {
+
+                document.getElementById(
+                    "searchInput"
+                ).value = "";
+
+                document.getElementById(
+                    "priorityFilter"
+                ).value = "all";
+
+                document.getElementById(
+                    "sortTasks"
+                ).value = "created";
+
+                renderTasks();
+
+            }
+        );
+
+    }
 
 }

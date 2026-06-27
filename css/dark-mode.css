@@ -32,10 +32,69 @@ body.dark-mode select{
     color:white;
     border:1px solid #666;
 }
+
 html.dark-mode,
 html.dark-mode body{
-
     background:#121212;
     color:white;
+}
 
+/* FIX: Controls ke input/select dark mode mein */
+body.dark-mode .controls input,
+body.dark-mode .controls select{
+    background:#444;
+    color:white;
+    border:1px solid #666;
+}
+
+/* FIX: Controls ke buttons dark mode mein */
+body.dark-mode .controls button{
+    background:#555;
+    color:white;
+}
+
+/* FIX: Add Task aur Export buttons ka color theek rakho */
+body.dark-mode #addTaskBtn{
+    background:#0056b3;
+    color:white;
+}
+
+body.dark-mode #clearFilters{
+    background:#555;
+    color:white;
+}
+
+body.dark-mode #exportBtn,
+body.dark-mode #exportJsonBtn{
+    background:#1e7e34;
+    color:white;
+}
+
+/* FIX: Toast notification dark mode mein */
+body.dark-mode #toast{
+    background:#555;
+    color:white;
+}
+
+/* FIX: Delete modal dark mode mein */
+body.dark-mode .delete-confirm{
+    background:#2b2b2b;
+    color:white;
+}
+
+/* FIX: Modal overlay dark mode mein */
+body.dark-mode .modal{
+    background:rgba(0,0,0,0.7);
+}
+
+/* FIX: Tab buttons dark mode mein */
+body.dark-mode .tab-btn{
+    background:#2b2b2b;
+    color:#66aaff;
+    border-color:#66aaff;
+}
+
+body.dark-mode .tab-btn.active{
+    background:#0056b3;
+    color:white;
 }
