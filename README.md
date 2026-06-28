@@ -2,12 +2,6 @@
 
 A fully featured Kanban-style task management board built using pure HTML, CSS, and vanilla JavaScript. Tasks are saved in localStorage so everything persists across page reloads. No frameworks, no libraries — just clean vanilla code.
 
-🔗 **Live Demo:** [your-github-username.github.io/task-manager-your-name](https://your-github-username.github.io/task-manager-your-name)
-*(Replace this link with your real GitHub Pages link after deploying)*
-
-📹 **Video Walkthrough:** [Watch on YouTube](https://youtube.com/your-video-link)
-*(Replace this link with your real video link)*
-
 ---
 
 ## Screenshots
@@ -109,16 +103,6 @@ task-manager-nayyab/
 
 ---
 
-## How to Run Locally
-
-1. Click the green **Code** button on this GitHub repository
-2. Click **Download ZIP** and extract the folder
-3. Open the extracted folder
-4. Double click **index.html** to open it in your browser
-5. Everything works locally — no server or installation needed
-
----
-
 ## Data Structure
 
 Each task is stored as a JavaScript object inside an array in localStorage:
@@ -149,3 +133,11 @@ const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 ## What I Learned
 
 Building this project was a great learning experience. The biggest challenge I faced was managing the tasks array as the single source of truth — every render, filter, sort, and stat had to come from the same array instead of reading from the DOM. I also learned how localStorage works with JSON.stringify and JSON.parse to save and restore complex data. Dark mode without a page flash was tricky — I solved it by running a tiny script in the head before the body renders. The filter, search, and sort system taught me how to chain .filter() and .sort() together cleanly. Overall this project made me much more confident with DOM manipulation, event handling, and organising JavaScript into separate files with clear responsibilities.
+
+---
+
+## Live Demo:
+(https://github.com/nayyabkhanam5/TASK-MANAGER-NAYYAB/tree/main)
+
+## Loom Video Walkthrough:
+(https://www.loom.com/share/d0ad2ea756874892bdd9ea94336d768f)
